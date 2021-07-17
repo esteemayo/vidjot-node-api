@@ -1,0 +1,74 @@
+[
+  {
+    "_id": "60dfb362db9c925704e31212",
+    "createdAt": "2021-07-03T00:44:33.319Z",
+    "title": "GraphQL Crash Course 2021",
+    "details": "A video on GraphQL",
+    "author": "jdoe",
+    "slug": "graphql-crash-course-2021"
+  },
+  {
+    "_id": "60dfb3a0db9c925704e31215",
+    "createdAt": "2021-07-03T00:44:33.319Z",
+    "title": "ReactJS Crash Course 2021",
+    "details": "A video on ReactJS",
+    "author": "jdoe",
+    "slug": "reactjs-crash-course-2021"
+  },
+  {
+    "_id": "60dfb467db9c925704e31218",
+    "createdAt": "2021-07-03T00:44:33.319Z",
+    "title": "Lyrics Search App With React and Context API",
+    "details": "A video on ReactJS with deep focus on how to use the context API",
+    "author": "jdoe",
+    "slug": "lyrics-search-app-with-react-and-context-api"
+  },
+  {
+    "_id": "60dfb513db9c925704e3121c",
+    "createdAt": "2021-07-03T00:44:33.319Z",
+    "title": "ECMAScipt Modules in Node",
+    "details": "A video on nodejs ESM",
+    "author": "mdoe",
+    "slug": "ecmascipt-modules-in-node"
+  },
+  {
+    "_id": "60dfb59bdb9c925704e3121f",
+    "createdAt": "2021-07-03T00:44:33.319Z",
+    "title": "Build an Expense Tracker",
+    "details": "A video on React, explaining the React hooks and context API",
+    "author": "mdoe",
+    "slug": "build-an-expense-tracker"
+  },
+  {
+    "_id": "60dfb668db9c925704e31222",
+    "createdAt": "2021-07-03T00:44:33.319Z",
+    "title": "React Phone E-Commerce Project",
+    "details": "A video on reactjs, built using react hooks, class components and context API and more...",
+    "author": "mdoe",
+    "slug": "react-phone-e-commerce-project"
+  },
+  {
+    "_id": "60dfb80edb9c925704e31228",
+    "createdAt": "2021-07-03T00:44:33.319Z",
+    "title": "Create a Movie Watchlist with React Hooks",
+    "details": "A video on react hooks, context API, reducer and localStorage",
+    "author": "loulou",
+    "slug": "create-a-movie-watchlist-with-react-hooks"
+  },
+  {
+    "_id": "60dfb917db9c925704e3122b",
+    "createdAt": "2021-07-03T00:44:33.319Z",
+    "title": "ReactJS and Bootstrap 4",
+    "details": "A reactjs tutorial for building portfolio...",
+    "author": "loulou",
+    "slug": "reactjs-and-bootstrap-4"
+  },
+  {
+    "_id": "60dfb9e2db9c925704e3122e",
+    "createdAt": "2021-07-03T00:44:33.319Z",
+    "title": "GraphQL With React and Apollo",
+    "details": "A video on GraphQL, React, express-graphql, express and more...",
+    "author": "loulou",
+    "slug": "graphql-with-react-and-apollo"
+  }
+]
