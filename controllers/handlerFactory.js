@@ -1,4 +1,6 @@
-const AppError = require('../utils/appError');
+const { StatusCodes } = require('http-status-codes');
+
+const NotFoundError = require('../errors/notFound');
 const APIFeatures = require('../utils/apiFeatures');
 const catchErrors = require('../utils/catchErrors');
 
@@ -15,7 +17,7 @@ exports.getAll = (Model, filter = false) =>
     // const docs = await features.query.explain();
     const docs = await features.query;
 
-    res.status(200).send(docs);
+    res.status(StatusCodes.OK).send(docs);
   });
 
 exports.getOne = (Model) =>
@@ -23,10 +25,10 @@ exports.getOne = (Model) =>
     const doc = await Model.findById(req.params.id);
 
     if (!doc) {
-      return next(new AppError('No document found with that ID', 404));
+      return next(new NotFoundError('No document found with that ID'));
     }
 
-    res.status(200).send(doc);
+    res.status(StatusCodes.OK).send(doc);
   });
 
 exports.getWithSlug = (Model) =>
@@ -34,17 +36,17 @@ exports.getWithSlug = (Model) =>
     const doc = await Model.findOne({ slug: req.params.slug });
 
     if (!doc) {
-      return next(new AppError('No document found with that SLUG', 404));
+      return next(new NotFoundError('No document found with that SLUG'));
     }
 
-    res.status(200).send(doc);
+    res.status(StatusCodes.OK).send(doc);
   });
 
 exports.createOne = (Model) =>
   catchErrors(async (req, res, next) => {
     const doc = await Model.create(req.body);
 
-    res.status(201).send(doc);
+    res.status(StatusCodes.CREATED).send(doc);
   });
 
 exports.updateOne = (Model) =>
@@ -55,10 +57,10 @@ exports.updateOne = (Model) =>
     });
 
     if (!doc) {
-      return next(new AppError('No document found with that ID', 404));
+      return next(new NotFoundError('No document found with that ID'));
     }
 
-    res.status(200).send(doc);
+    res.status(StatusCodes.OK).send(doc);
   });
 
 exports.deleteOne = (Model) =>
@@ -66,8 +68,8 @@ exports.deleteOne = (Model) =>
     const doc = await Model.findByIdAndDelete(req.params.id);
 
     if (!doc) {
-      return next(new AppError('No document found with that ID', 404));
+      return next(new NotFoundError('No document found with that ID'));
     }
 
-    res.status(204).send(doc);
+    res.status(StatusCodes.NO_CONTENT).send(doc);
   });

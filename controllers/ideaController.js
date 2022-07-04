@@ -1,47 +1,49 @@
+const { StatusCodes } = require('http-status-codes');
+
 const Idea = require('../models/Idea');
 const factory = require('./handlerFactory');
-const AppError = require('../utils/appError');
 const catchErrors = require('../utils/catchErrors');
+const NotFoundError = require('../errors/notFound');
+const UnauthenticatedError = require('../errors/unauthenticated');
 
 exports.sendAuthorId = (req, res, next) => {
   if (!req.body.author) req.body.author = req.user.username;
-
   next();
 };
 
 exports.updateIdea = catchErrors(async (req, res, next) => {
-  const idea = await Idea.findById(req.params.id);
+  let idea = await Idea.findById(req.params.id);
 
   if (!idea) {
-    return next(new AppError('No idea found with that ID', 404));
+    return next(new NotFoundError('No idea found with that ID'));
   }
 
   if (idea.author === req.user.username) {
-    await Idea.findByIdAndUpdate(req.params.id, req.body, {
+    idea = await Idea.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
 
-    res.status(200).send(idea);
+    res.status(StatusCodes.OK).send(idea);
   }
 
-  return next(new AppError('You can only update your idea.', 401));
+  return next(new UnauthenticatedError('You can only update your idea.'));
 });
 
 exports.deleteIdea = catchErrors(async (req, res, next) => {
   const idea = await Idea.findById(req.params.id);
 
   if (!idea) {
-    return next(new AppError('No idea found with that ID', 404));
+    return next(new NotFoundError('No idea found with that ID'));
   }
 
   if (idea.author === req.user.username) {
     await Idea.findByIdAndDelete(req.params.id);
 
-    res.status(204).send(idea);
+    res.status(StatusCodes.NO_CONTENT).send(idea);
   }
 
-  return next(new AppError('You can only delete your idea.', 401));
+  return next(new UnauthenticatedError('You can only delete your idea.'));
 });
 
 exports.getAllIdeas = factory.getAll(Idea, true);

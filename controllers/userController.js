@@ -1,27 +1,30 @@
 const _ = require('lodash');
+const { StatusCodes } = require('http-status-codes');
 
 const User = require('../models/User');
 const Idea = require('../models/Idea');
 const factory = require('./handlerFactory');
-const AppError = require('../utils/appError');
 const catchErrors = require('../utils/catchErrors');
+const BadRequestError = require('../errors/badRequest');
 
 exports.signup = catchErrors(async (req, res, next) => {
-  const user = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    role: req.body.role,
-    username: req.body.username,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-    passwordChangedAt: req.body.passwordChangedAt,
-  });
+  const newUser = _.pick(req.body, [
+    'name',
+    'email',
+    'role',
+    'username',
+    'password',
+    'passwordConfirm',
+    'passwordChangedAt',
+  ]);
+
+  const user = await User.create({ ...newUser });
 
   const token = user.generateAuthToken();
   user.password = undefined;
 
   res
-    .status(201)
+    .status(StatusCodes.CREATED)
     .header('x-auth-token', token)
     .header('access-control-expose-headers', 'x-auth-token')
     .send(user);
@@ -32,26 +35,29 @@ exports.updateMe = catchErrors(async (req, res, next) => {
 
   if (password || passwordConfirm) {
     return next(
-      new AppError(
+      new BadRequestError(
         `This route is not for password updates. Please use ${
           req.protocol
-        }://${req.get('host')}/api/v1/auth/update-my-password`,
-        400
+        }://${req.get('host')}/api/v1/auth/update-my-password`
       )
     );
   }
 
   const filterBody = _.pick(req.body, ['name', 'email', 'username']);
-  const user = await User.findByIdAndUpdate(req.user._id, filterBody, {
-    new: true,
-    runValidators: true,
-  });
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    { $set: { ...filterBody } },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
 
   const token = user.generateAuthToken();
   user.password = undefined;
 
   res
-    .status(200)
+    .status(StatusCodes.OK)
     .header('x-auth-token', token)
     .header('access-control-expose-headers', 'x-auth-token')
     .send(user);
@@ -64,7 +70,7 @@ exports.deleteMe = catchErrors(async (req, res, next) => {
 
   await Idea.deleteMany({ author: user.username });
 
-  res.status(204).json({
+  res.status(StatusCodes.NO_CONTENT).json({
     status: 'success',
     data: null,
   });
@@ -77,7 +83,7 @@ exports.getMe = (req, res, next) => {
 
 exports.createUser = (req, res, next) => {
   res
-    .status(500)
+    .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .send(
       `This route is not defined! Please use ${req.protocol}://${req.get(
         'host'
