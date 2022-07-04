@@ -22,10 +22,14 @@ exports.getAll = (Model, filter = false) =>
 
 exports.getOne = (Model) =>
   catchErrors(async (req, res, next) => {
-    const doc = await Model.findById(req.params.id);
+    const { id: docId } = req.params;
+
+    const doc = await Model.findById(docId);
 
     if (!doc) {
-      return next(new NotFoundError('No document found with that ID'));
+      return next(
+        new NotFoundError(`No document found with that ID → ${docId}`)
+      );
     }
 
     res.status(StatusCodes.OK).send(doc);
@@ -33,10 +37,14 @@ exports.getOne = (Model) =>
 
 exports.getWithSlug = (Model) =>
   catchErrors(async (req, res, next) => {
-    const doc = await Model.findOne({ slug: req.params.slug });
+    const { slug } = req.params;
+
+    const doc = await Model.findOne({ slug });
 
     if (!doc) {
-      return next(new NotFoundError('No document found with that SLUG'));
+      return next(
+        new NotFoundError(`No document found with that SLUG → ${slug}`)
+      );
     }
 
     res.status(StatusCodes.OK).send(doc);
@@ -44,20 +52,28 @@ exports.getWithSlug = (Model) =>
 
 exports.createOne = (Model) =>
   catchErrors(async (req, res, next) => {
-    const doc = await Model.create(req.body);
+    const doc = await Model.create({ ...req.body });
 
     res.status(StatusCodes.CREATED).send(doc);
   });
 
 exports.updateOne = (Model) =>
   catchErrors(async (req, res, next) => {
-    const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const { id: docId } = req.params;
+
+    const doc = await Model.findByIdAndUpdate(
+      docId,
+      { $set: { ...req.body } },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     if (!doc) {
-      return next(new NotFoundError('No document found with that ID'));
+      return next(
+        new NotFoundError(`No document found with that ID → ${docId}`)
+      );
     }
 
     res.status(StatusCodes.OK).send(doc);
@@ -65,10 +81,14 @@ exports.updateOne = (Model) =>
 
 exports.deleteOne = (Model) =>
   catchErrors(async (req, res, next) => {
-    const doc = await Model.findByIdAndDelete(req.params.id);
+    const { id: docId } = req.params;
+
+    const doc = await Model.findByIdAndDelete(docId);
 
     if (!doc) {
-      return next(new NotFoundError('No document found with that ID'));
+      return next(
+        new NotFoundError(`No document found with that ID → ${docId}`)
+      );
     }
 
     res.status(StatusCodes.NO_CONTENT).send(doc);
