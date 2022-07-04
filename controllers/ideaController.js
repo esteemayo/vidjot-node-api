@@ -12,14 +12,16 @@ exports.sendAuthorId = (req, res, next) => {
 };
 
 exports.updateIdea = catchErrors(async (req, res, next) => {
-  let idea = await Idea.findById(req.params.id);
+  const { id: ideaId } = req.params;
+
+  let idea = await Idea.findById(ideaId);
 
   if (!idea) {
-    return next(new NotFoundError('No idea found with that ID'));
+    return next(new NotFoundError(`No idea found with that ID → ${ideaId}`));
   }
 
   if (idea.author === req.user.username) {
-    idea = await Idea.findByIdAndUpdate(req.params.id, req.body, {
+    idea = await Idea.findByIdAndUpdate(ideaId, req.body, {
       new: true,
       runValidators: true,
     });
@@ -31,14 +33,16 @@ exports.updateIdea = catchErrors(async (req, res, next) => {
 });
 
 exports.deleteIdea = catchErrors(async (req, res, next) => {
-  const idea = await Idea.findById(req.params.id);
+  const { id: ideaId } = req.params;
+
+  const idea = await Idea.findById(ideaId);
 
   if (!idea) {
-    return next(new NotFoundError('No idea found with that ID'));
+    return next(new NotFoundError(`No idea found with that ID → ${ideaId}`));
   }
 
   if (idea.author === req.user.username) {
-    await Idea.findByIdAndDelete(req.params.id);
+    await Idea.findByIdAndDelete(ideaId);
 
     res.status(StatusCodes.NO_CONTENT).send(idea);
   }
