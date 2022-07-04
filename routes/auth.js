@@ -1,17 +1,17 @@
-const express = require("express");
+const express = require('express');
 
-const authController = require("../controllers/authController");
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-router.post("/login", authController.login);
+router.post('/login', authController.login);
 
-router.post("/forgot-password", authController.forgotPassword);
+router.post('/forgot-password', authController.forgotPassword);
 
-router.post("/reset-password/:token", authController.resetPassword);
+router.post('/reset-password/:token', authController.resetPassword);
 
 router.patch(
-  "/update-my-password",
+  '/update-my-password',
   authController.protect,
   authController.updatePassword
 );
