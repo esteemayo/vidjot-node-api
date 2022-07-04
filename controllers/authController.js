@@ -11,17 +11,7 @@ const NotFoundError = require('../errors/notFound');
 const ForbiddenError = require('../errors/forbidden');
 const BadRequestError = require('../errors/badRequest');
 const UnauthenticatedError = require('../errors/unauthenticated');
-
-const createSendToken = (user, statusCode, res) => {
-  const token = user.generateAuthToken();
-  user.password = undefined;
-
-  res
-    .status(statusCode)
-    .header('x-auth-token', token)
-    .header('access-control-expose-headers', 'x-auth-token')
-    .send(user);
-};
+const createSendToken = require('../middlewares/createSendToken');
 
 exports.login = catchErrors(async (req, res, next) => {
   const { email, password } = req.body;
@@ -43,10 +33,9 @@ exports.protect = catchErrors(async (req, res, next) => {
   if (!config.get('requiresAuth')) return next();
 
   const token = req.headers['x-auth-token'];
-  if (!token)
-    res
-      .status(StatusCodes.UNAUTHORIZED)
-      .send('Access denied. No token provided.');
+  if (!token) {
+    return next(new UnauthenticatedError('Access denied. No token provided.'));
+  }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -94,9 +83,9 @@ exports.forgotPassword = catchErrors(async (req, res, next) => {
       <p>There was a request to change your password!</p>
       <p>If you did not make this request then please ignore this email.</p>
       <p>Otherwise, please click this link to change your password: 
-          <a style='text-decoration: none; background: #15847b; color: #fff; padding: 5px 10px; border-radius: 5px;' href='${resetURL}'>
-              Reset my password →
-          </a>
+        <a style='text-decoration: none; background: #15847b; color: #fff; padding: 5px 10px; border-radius: 5px;' href='${resetURL}'>
+          Reset my password →
+        </a>
       </p>
     </div>
   `;
@@ -122,10 +111,9 @@ exports.forgotPassword = catchErrors(async (req, res, next) => {
 });
 
 exports.resetPassword = catchErrors(async (req, res, next) => {
-  const hashedToken = crypto
-    .createHash('sha256')
-    .update(req.params.token)
-    .digest('hex');
+  const { token } = req.params;
+
+  const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
 
   const user = await User.findOne({
     resetPasswordToken: hashedToken,
