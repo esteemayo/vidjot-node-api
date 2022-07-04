@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
-const mongoose = require('mongoose');
 const fs = require('fs');
+const mongoose = require('mongoose');
 require('colors');
 
 // models
