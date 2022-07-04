@@ -6,6 +6,7 @@ const Idea = require('../models/Idea');
 const factory = require('./handlerFactory');
 const catchErrors = require('../utils/catchErrors');
 const BadRequestError = require('../errors/badRequest');
+const createSendToken = require('../middlewares/createSendToken');
 
 exports.signup = catchErrors(async (req, res, next) => {
   const newUser = _.pick(req.body, [
@@ -20,14 +21,7 @@ exports.signup = catchErrors(async (req, res, next) => {
 
   const user = await User.create({ ...newUser });
 
-  const token = user.generateAuthToken();
-  user.password = undefined;
-
-  res
-    .status(StatusCodes.CREATED)
-    .header('x-auth-token', token)
-    .header('access-control-expose-headers', 'x-auth-token')
-    .send(user);
+  createSendToken(user, StatusCodes.CREATED, res);
 });
 
 exports.updateMe = catchErrors(async (req, res, next) => {
@@ -53,14 +47,7 @@ exports.updateMe = catchErrors(async (req, res, next) => {
     }
   );
 
-  const token = user.generateAuthToken();
-  user.password = undefined;
-
-  res
-    .status(StatusCodes.OK)
-    .header('x-auth-token', token)
-    .header('access-control-expose-headers', 'x-auth-token')
-    .send(user);
+  createSendToken(user, StatusCodes.OK, res);
 });
 
 exports.deleteMe = catchErrors(async (req, res, next) => {
