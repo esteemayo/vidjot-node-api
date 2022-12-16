@@ -26,7 +26,7 @@ exports.updateIdea = catchErrors(async (req, res, next) => {
       runValidators: true,
     });
 
-    res.status(StatusCodes.OK).send(idea);
+    res.status(StatusCodes.OK).json(idea);
   }
 
   return next(new UnauthenticatedError('You can only update your idea.'));
@@ -44,7 +44,7 @@ exports.deleteIdea = catchErrors(async (req, res, next) => {
   if (idea.author === req.user.username) {
     await Idea.findByIdAndDelete(ideaId);
 
-    res.status(StatusCodes.NO_CONTENT).send(idea);
+    res.status(StatusCodes.NO_CONTENT).json(idea);
   }
 
   return next(new UnauthenticatedError('You can only delete your idea.'));
