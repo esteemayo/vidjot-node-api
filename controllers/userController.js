@@ -21,7 +21,9 @@ exports.signup = catchErrors(async (req, res, next) => {
 
   const user = await User.create({ ...newUser });
 
-  createSendToken(user, StatusCodes.CREATED, res);
+  if (user) {
+    createSendToken(user, StatusCodes.CREATED, res);
+  }
 });
 
 exports.updateMe = catchErrors(async (req, res, next) => {
@@ -30,8 +32,7 @@ exports.updateMe = catchErrors(async (req, res, next) => {
   if (password || passwordConfirm) {
     return next(
       new BadRequestError(
-        `This route is not for password updates. Please use ${
-          req.protocol
+        `This route is not for password updates. Please use ${req.protocol
         }://${req.get('host')}/api/v1/auth/update-my-password`
       )
     );
