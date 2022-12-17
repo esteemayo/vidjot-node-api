@@ -1,5 +1,4 @@
 const crypto = require('crypto');
-const config = require('config');
 const { StatusCodes } = require('http-status-codes');
 
 const User = require('../models/User');
@@ -7,7 +6,6 @@ const sendEmail = require('../utils/email');
 const AppError = require('../errors/appError');
 const catchErrors = require('../utils/catchErrors');
 const NotFoundError = require('../errors/notFound');
-const ForbiddenError = require('../errors/forbidden');
 const BadRequestError = require('../errors/badRequest');
 const UnauthenticatedError = require('../errors/unauthenticated');
 const createSendToken = require('../middlewares/createSendToken');
