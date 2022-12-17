@@ -35,7 +35,7 @@ exports.restrictTo =
 
 
 exports.verifyUser = (req, res, next) => {
-  if (req.user.id === req.params.id) {
+  if (req.user._id === req.params.id) {
     return next();
   }
   return next(new ForbiddenError('You are not authorized to perform this operation'));
