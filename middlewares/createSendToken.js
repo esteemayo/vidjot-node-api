@@ -6,7 +6,7 @@ const createSendToken = (user, statusCode, res) => {
     .status(statusCode)
     .header('x-auth-token', token)
     .header('access-control-expose-headers', 'x-auth-token')
-    .send(user);
+    .json(user);
 };
 
 module.exports = createSendToken;
