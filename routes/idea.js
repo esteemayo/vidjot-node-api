@@ -1,17 +1,17 @@
 const express = require('express');
 
-const authController = require('../controllers/authController');
+const authMiddleware = require('../middlewares/authMiddleware');
 const ideaController = require('../controllers/ideaController');
 
 const router = express.Router();
 
-router.use(authController.protect);
+router.use(authMiddleware.protect);
 
 router
   .route('/')
   .get(ideaController.getAllIdeas)
   .post(
-    authController.restrictTo('user'),
+    authMiddleware.restrictTo('user'),
     ideaController.sendAuthorId,
     ideaController.createIdea
   );
@@ -19,9 +19,9 @@ router
 router
   .route('/:id')
   .get(ideaController.getIdea)
-  .patch(authController.restrictTo('user'), ideaController.updateIdea)
+  .patch(authMiddleware.restrictTo('user'), ideaController.updateIdea)
   .delete(
-    authController.restrictTo('user', 'admin'),
+    authMiddleware.restrictTo('user', 'admin'),
     ideaController.deleteIdea
   );
 
