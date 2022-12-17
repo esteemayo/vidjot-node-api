@@ -53,6 +53,6 @@ ideaSchema.pre('save', async function (next) {
   next();
 });
 
-const Idea = mongoose.model('Idea', ideaSchema);
+const Idea = mongoose.models.Idea || mongoose.model('Idea', ideaSchema);
 
 module.exports = Idea;
