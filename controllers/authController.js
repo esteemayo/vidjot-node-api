@@ -29,34 +29,6 @@ exports.login = catchErrors(async (req, res, next) => {
   res.status(StatusCodes.OK).send(token);
 });
 
-exports.protect = catchErrors(async (req, res, next) => {
-  if (!config.get('requiresAuth')) return next();
-
-  const token = req.headers['x-auth-token'];
-  if (!token) {
-    return next(new UnauthenticatedError('Access denied. No token provided.'));
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (err) {
-    return next(new BadRequestError('Invalid token'));
-  }
-});
-
-exports.restrictTo = (...roles) => {
-  return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
-      return next(
-        new ForbiddenError('You do not have permission to perform this action.')
-      );
-    }
-    next();
-  };
-};
-
 exports.forgotPassword = catchErrors(async (req, res, next) => {
   const { email } = req.body;
 
