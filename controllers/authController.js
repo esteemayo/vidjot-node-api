@@ -1,6 +1,5 @@
 const crypto = require('crypto');
 const config = require('config');
-const jwt = require('jsonwebtoken');
 const { StatusCodes } = require('http-status-codes');
 
 const User = require('../models/User');
