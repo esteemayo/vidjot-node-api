@@ -23,7 +23,10 @@ exports.login = catchErrors(async (req, res, next) => {
   }
 
   const token = user.generateAuthToken();
-  res.status(StatusCodes.OK).send(token);
+  res.status(StatusCodes.OK).json({
+    token,
+    ...user._doc,
+  });
 });
 
 exports.forgotPassword = catchErrors(async (req, res, next) => {
