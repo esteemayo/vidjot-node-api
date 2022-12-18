@@ -22,11 +22,7 @@ exports.login = catchErrors(async (req, res, next) => {
     return next(new UnauthenticatedError('Incorrect email or password.'));
   }
 
-  const token = user.generateAuthToken();
-  res.status(StatusCodes.OK).json({
-    token,
-    ...user._doc,
-  });
+  createSendToken(user, StatusCodes.OK, res);
 });
 
 exports.forgotPassword = catchErrors(async (req, res, next) => {
