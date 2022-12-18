@@ -9,20 +9,20 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Please tell us your name.'],
+      required: [true, 'Please tell us your name'],
     },
     email: {
       type: String,
       trim: true,
       unique: true,
       lowercase: true,
-      required: [true, 'Please provide your email address.'],
-      validate: [validator.isEmail, 'Please provide a valid email address.'],
+      required: [true, 'Please provide your email address'],
+      validate: [validator.isEmail, 'Please provide a valid email address'],
     },
     username: {
       type: String,
       unique: true,
-      required: [true, 'Please tell us your username.'],
+      required: [true, 'Please tell us your username'],
     },
     role: {
       type: String,
@@ -31,8 +31,8 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, 'Please provide a password.'],
-      minlength: [8, 'Password must be atleast 8 characters long.'],
+      required: [true, 'Please provide a password'],
+      minlength: [8, 'Password must be atleast 8 characters long'],
       select: false,
     },
     passwordConfirm: {
@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema(
         validator: function (val) {
           return val === this.password;
         },
-        message: 'Passwords are not the same.',
+        message: 'Passwords are not the same',
       },
     },
     active: {
