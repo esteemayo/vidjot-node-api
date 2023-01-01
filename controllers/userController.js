@@ -1,14 +1,15 @@
-const _ = require('lodash');
-const { StatusCodes } = require('http-status-codes');
+/* eslint-disable */
+import _ from 'lodash';
+import { StatusCodes } from 'http-status-codes';
 
-const User = require('../models/User');
-const Idea = require('../models/Idea');
-const factory = require('./handlerFactory');
-const catchErrors = require('../utils/catchErrors');
-const BadRequestError = require('../errors/badRequest');
-const createSendToken = require('../middlewares/createSendToken');
+import User from '../models/User.js';
+import Idea from '../models/Idea.js';
+import * as factory from './handlerFactory.js';
+import catchErrors from '../utils/catchErrors.js';
+import BadRequestError from '../errors/badRequest.js';
+import createSendToken from '../middlewares/createSendToken.js';
 
-exports.signup = catchErrors(async (req, res, next) => {
+export const signup = catchErrors(async (req, res, next) => {
   const newUser = _.pick(req.body, [
     'name',
     'email',
@@ -26,7 +27,7 @@ exports.signup = catchErrors(async (req, res, next) => {
   }
 });
 
-exports.updateMe = catchErrors(async (req, res, next) => {
+export const updateMe = catchErrors(async (req, res, next) => {
   const { password, passwordConfirm } = req.body;
 
   if (password || passwordConfirm) {
@@ -51,7 +52,7 @@ exports.updateMe = catchErrors(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, res);
 });
 
-exports.deleteMe = catchErrors(async (req, res, next) => {
+export const deleteMe = catchErrors(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.user._id, {
     active: false,
   });
@@ -64,12 +65,12 @@ exports.deleteMe = catchErrors(async (req, res, next) => {
   });
 });
 
-exports.getMe = (req, res, next) => {
+export const getMe = (req, res, next) => {
   req.params.id = req.user._id;
   next();
 };
 
-exports.createUser = (req, res, next) => {
+export const createUser = (req, res, next) => {
   res
     .status(StatusCodes.INTERNAL_SERVER_ERROR)
     .send(
@@ -79,7 +80,7 @@ exports.createUser = (req, res, next) => {
     );
 };
 
-exports.getAllUsers = factory.getAll(User);
-exports.getUser = factory.getOne(User);
-exports.updateUser = factory.updateOne(User);
-exports.deleteUser = factory.deleteOne(User);
+export const getAllUsers = factory.getAll(User);
+export const getUser = factory.getOne(User);
+export const updateUser = factory.updateOne(User);
+export const deleteUser = factory.deleteOne(User);
