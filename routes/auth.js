@@ -1,7 +1,8 @@
-const express = require('express');
+/* eslint-disable */
+import express from 'express';
 
-const authController = require('../controllers/authController');
-const authMiddleware = require('../middlewares/authMiddleware');
+import * as authController from '../controllers/authController.js';
+import * as authMiddleware from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
@@ -17,4 +18,4 @@ router.patch(
   authController.updatePassword
 );
 
-module.exports = router;
+export default router;
