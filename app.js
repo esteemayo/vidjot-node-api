@@ -8,6 +8,7 @@ import xss from 'xss-clean';
 import cors from 'cors';
 import compression from 'compression';
 import hpp from 'hpp';
+import dotenv from 'dotenv';
 
 // requiring routes
 import NotFoundError from './errors/notFound.js';
@@ -15,6 +16,8 @@ import ideaRouter from './routes/idea.js';
 import globalErrorHandler from './controllers/errorController.js';
 import authRouter from './routes/auth.js';
 import userRouter from './routes/user.js';
+
+dotenv.config({ path: './config.env' });
 
 // start express app
 const app = express();
