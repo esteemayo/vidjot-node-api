@@ -1,10 +1,11 @@
-const { StatusCodes } = require('http-status-codes');
+/* eslint-disable */
+import { StatusCodes } from 'http-status-codes';
 
-const NotFoundError = require('../errors/notFound');
-const APIFeatures = require('../utils/apiFeatures');
-const catchErrors = require('../utils/catchErrors');
+import NotFoundError from '../errors/notFound.js';
+import APIFeatures from '../utils/apiFeatures.js';
+import catchErrors from '../utils/catchErrors.js';
 
-exports.getAll = (Model, filter = false) =>
+export const getAll = (Model, filter = false) =>
   catchErrors(async (req, res, next) => {
     const filterObj = filter ? { author: `${req.user.username}` } : {};
 
@@ -20,7 +21,7 @@ exports.getAll = (Model, filter = false) =>
     res.status(StatusCodes.OK).json(docs);
   });
 
-exports.getOne = (Model) =>
+export const getOne = (Model) =>
   catchErrors(async (req, res, next) => {
     const { id: docId } = req.params;
 
@@ -35,7 +36,7 @@ exports.getOne = (Model) =>
     res.status(StatusCodes.OK).json(doc);
   });
 
-exports.getWithSlug = (Model) =>
+export const getWithSlug = (Model) =>
   catchErrors(async (req, res, next) => {
     const { slug } = req.params;
 
@@ -50,14 +51,14 @@ exports.getWithSlug = (Model) =>
     res.status(StatusCodes.OK).json(doc);
   });
 
-exports.createOne = (Model) =>
+export const createOne = (Model) =>
   catchErrors(async (req, res, next) => {
     const doc = await Model.create({ ...req.body });
 
     res.status(StatusCodes.CREATED).json(doc);
   });
 
-exports.updateOne = (Model) =>
+export const updateOne = (Model) =>
   catchErrors(async (req, res, next) => {
     const { id: docId } = req.params;
 
@@ -79,7 +80,7 @@ exports.updateOne = (Model) =>
     res.status(StatusCodes.OK).json(doc);
   });
 
-exports.deleteOne = (Model) =>
+export const deleteOne = (Model) =>
   catchErrors(async (req, res, next) => {
     const { id: docId } = req.params;
 
