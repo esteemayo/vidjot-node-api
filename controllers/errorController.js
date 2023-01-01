@@ -1,4 +1,4 @@
-const { StatusCodes } = require('http-status-codes');
+import { StatusCodes } from 'http-status-codes';
 
 const handleCastErrorDB = (customError, err) => {
   customError.message = `Invalid ${err.path}: ${err.value}`;
@@ -27,22 +27,18 @@ const handleJWTExpiredError = (customError) => {
   customError.statusCode = StatusCodes.UNAUTHORIZED;
 };
 
-const sendErrorDev = (err, res) => {
-  return res.status(err.statusCode).json({
-    status: err.status,
-    message: err.message,
-    stack: err.stack,
-  });
-};
+const sendErrorDev = (err, res) => res.status(err.statusCode).json({
+  status: err.status,
+  message: err.message,
+  stack: err.stack,
+});
 
-const sendErrorProd = (err, res) => {
-  return res.status(err.statusCode).json({
-    status: err.status,
-    message: err.message,
-  });
-};
+const sendErrorProd = (err, res) => res.status(err.statusCode).json({
+  status: err.status,
+  message: err.message,
+});
 
-module.exports = (err, req, res, next) => {
+const globalErrorHandler = (err, req, res, next) => {
   const customError = {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     message: err.message || 'Something went wrong, please try again later',
@@ -62,3 +58,5 @@ module.exports = (err, req, res, next) => {
     sendErrorProd(customError, res);
   }
 };
+
+export default globalErrorHandler;
