@@ -1,12 +1,13 @@
-const config = require('config');
-const jwt = require('jsonwebtoken');
+/* eslint-disable */
+import config from 'config';
+import jwt from 'jsonwebtoken';
 
-const catchErrors = require('../utils/catchErrors');
-const ForbiddenError = require('../errors/forbidden');
-const BadRequestError = require('../errors/badRequest');
-const UnauthenticatedError = require('../errors/unauthenticated');
+import catchErrors from '../utils/catchErrors.js';
+import ForbiddenError from '../errors/forbidden.js';
+import BadRequestError from '../errors/badRequest.js';
+import UnauthenticatedError from '../errors/unauthenticated.js';
 
-exports.protect = catchErrors(async (req, res, next) => {
+export const protect = catchErrors(async (req, res, next) => {
   if (!config.get('requiresAuth')) return next();
 
   const token = req.headers['x-auth-token'];
@@ -23,7 +24,7 @@ exports.protect = catchErrors(async (req, res, next) => {
   }
 });
 
-exports.restrictTo =
+export const restrictTo =
   (...roles) =>
     (req, res, next) => {
       if (!roles.includes(req.user.role)) {
@@ -35,7 +36,7 @@ exports.restrictTo =
     };
 
 
-exports.verifyUser = (req, res, next) => {
+export const verifyUser = (req, res, next) => {
   if (req.user._id === req.params.id) {
     return next();
   }
