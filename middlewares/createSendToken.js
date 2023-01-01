@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const createSendToken = (user, statusCode, res) => {
   const token = user.generateAuthToken();
   user.password = undefined;
@@ -12,4 +14,4 @@ const createSendToken = (user, statusCode, res) => {
     });
 };
 
-module.exports = createSendToken;
+export default createSendToken;
