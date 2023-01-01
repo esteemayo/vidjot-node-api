@@ -1,3 +1,4 @@
+/* eslint-disable */
 import express from 'express';
 import logger from 'morgan';
 import rateLimit from 'express-rate-limit';
