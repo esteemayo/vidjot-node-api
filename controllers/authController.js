@@ -1,16 +1,17 @@
-const crypto = require('crypto');
-const { StatusCodes } = require('http-status-codes');
+/* eslint-disable */
+import crypto from 'crypto';
+import { StatusCodes } from 'http-status-codes';
 
-const User = require('../models/User');
-const sendEmail = require('../utils/email');
-const AppError = require('../errors/appError');
-const catchErrors = require('../utils/catchErrors');
-const NotFoundError = require('../errors/notFound');
-const BadRequestError = require('../errors/badRequest');
-const UnauthenticatedError = require('../errors/unauthenticated');
-const createSendToken = require('../middlewares/createSendToken');
+import User from '../models/User.js';
+import sendEmail from '../utils/email.js';
+import AppError from '../errors/appError.js';
+import catchErrors from '../utils/catchErrors.js';
+import NotFoundError from '../errors/notFound.js';
+import BadRequestError from '../errors/badRequest.js';
+import UnauthenticatedError from '../errors/unauthenticated.js';
+import createSendToken from '../middlewares/createSendToken.js';
 
-exports.login = catchErrors(async (req, res, next) => {
+export const login = catchErrors(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -25,7 +26,7 @@ exports.login = catchErrors(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, res);
 });
 
-exports.forgotPassword = catchErrors(async (req, res, next) => {
+export const forgotPassword = catchErrors(async (req, res, next) => {
   const { email } = req.body;
 
   const user = await User.findOne({ email });
@@ -80,7 +81,7 @@ exports.forgotPassword = catchErrors(async (req, res, next) => {
   }
 });
 
-exports.resetPassword = catchErrors(async (req, res, next) => {
+export const resetPassword = catchErrors(async (req, res, next) => {
   const { token } = req.params;
 
   const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
@@ -103,7 +104,7 @@ exports.resetPassword = catchErrors(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, res);
 });
 
-exports.updatePassword = catchErrors(async (req, res, next) => {
+export const updatePassword = catchErrors(async (req, res, next) => {
   const { password, passwordConfirm, passwordCurrent } = req.body;
 
   const user = await User.findById(req.user._id).select('+password');
