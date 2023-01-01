@@ -1,7 +1,8 @@
-const express = require('express');
+/* eslint-disable */
+import express from 'express';
 
-const authMiddleware = require('../middlewares/authMiddleware');
-const ideaController = require('../controllers/ideaController');
+import * as authMiddleware from '../middlewares/authMiddleware.js';
+import * as ideaController from '../controllers/ideaController.js';
 
 const router = express.Router();
 
@@ -27,4 +28,4 @@ router
 
 router.get('/details/:slug', ideaController.getIdeaWithSlug);
 
-module.exports = router;
+export default router;
