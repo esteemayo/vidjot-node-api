@@ -1,5 +1,5 @@
-const slugify = require('slugify');
-const mongoose = require('mongoose');
+import slugify from 'slugify';
+import mongoose from 'mongoose';
 
 const ideaSchema = new mongoose.Schema(
   {
@@ -55,4 +55,4 @@ ideaSchema.pre('save', async function (next) {
 
 const Idea = mongoose.models.Idea || mongoose.model('Idea', ideaSchema);
 
-module.exports = Idea;
+export default Idea;
