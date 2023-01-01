@@ -1,5 +1,6 @@
-const { StatusCodes } = require('http-status-codes');
-const AppError = require('./appError');
+/* eslint-disable */
+import { StatusCodes } from 'http-status-codes';
+import AppError from './appError.js';
 
 class BadRequestError extends AppError {
   constructor(message) {
@@ -10,4 +11,4 @@ class BadRequestError extends AppError {
   }
 }
 
-module.exports = BadRequestError;
+export default BadRequestError;
