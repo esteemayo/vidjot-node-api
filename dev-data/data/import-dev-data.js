@@ -1,37 +1,22 @@
-const dotenv = require('dotenv');
-const fs = require('fs');
-const mongoose = require('mongoose');
-require('colors');
+/* eslint-disable */
+import fs from 'fs';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import 'colors';
 
 // models
-const Idea = require('../../models/Idea');
-const User = require('../../models/User');
+import Idea from '../../models/Idea.js';
+import User from '../../models/User.js';
+import connectDB from '../../startup/db.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: './config.env' });
 
-// db local
-const dbLocal = process.env.DATABASE_LOCAL;
-
-// db atlas
-const mongoURI = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
-
-const devEnv = process.env !== 'production';
-
 // mongoDB connection
-mongoose
-  .connect(`${devEnv ? dbLocal : mongoURI}`, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then(() =>
-    console.log(`Connected to MongoDB → ${devEnv ? dbLocal : mongoURI}`)
-  )
-  .catch((err) => console.log(`Couldn't connect to MongoDB → ${err}`));
+connectDB();
 
 // read JSON file
 const ideas = JSON.parse(fs.readFileSync(`${__dirname}/ideas.json`, 'utf-8'));
