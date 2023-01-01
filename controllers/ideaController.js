@@ -1,17 +1,18 @@
-const { StatusCodes } = require('http-status-codes');
+/* eslint-disable */
+import { StatusCodes } from 'http-status-codes';
 
-const Idea = require('../models/Idea');
-const factory = require('./handlerFactory');
-const catchErrors = require('../utils/catchErrors');
-const NotFoundError = require('../errors/notFound');
-const UnauthenticatedError = require('../errors/unauthenticated');
+import Idea from '../models/Idea.js';
+import * as factory from './handlerFactory.js';
+import catchErrors from '../utils/catchErrors.js';
+import NotFoundError from '../errors/notFound.js';
+import UnauthenticatedError from '../errors/unauthenticated.js';
 
-exports.sendAuthorId = (req, res, next) => {
+export const sendAuthorId = (req, res, next) => {
   if (!req.body.author) req.body.author = req.user.username;
   next();
 };
 
-exports.updateIdea = catchErrors(async (req, res, next) => {
+export const updateIdea = catchErrors(async (req, res, next) => {
   const { id: ideaId } = req.params;
 
   let idea = await Idea.findById(ideaId);
@@ -32,7 +33,7 @@ exports.updateIdea = catchErrors(async (req, res, next) => {
   return next(new UnauthenticatedError('You can only update your idea.'));
 });
 
-exports.deleteIdea = catchErrors(async (req, res, next) => {
+export const deleteIdea = catchErrors(async (req, res, next) => {
   const { id: ideaId } = req.params;
 
   const idea = await Idea.findById(ideaId);
@@ -50,7 +51,7 @@ exports.deleteIdea = catchErrors(async (req, res, next) => {
   return next(new UnauthenticatedError('You can only delete your idea.'));
 });
 
-exports.getAllIdeas = factory.getAll(Idea, true);
-exports.getIdea = factory.getOne(Idea);
-exports.getIdeaWithSlug = factory.getWithSlug(Idea);
-exports.createIdea = factory.createOne(Idea);
+export const getAllIdeas = factory.getAll(Idea, true);
+export const getIdea = factory.getOne(Idea);
+export const getIdeaWithSlug = factory.getWithSlug(Idea);
+export const createIdea = factory.createOne(Idea);
