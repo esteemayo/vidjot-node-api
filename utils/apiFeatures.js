@@ -1,3 +1,4 @@
+/* eslint-disable */
 class APIFeatures {
   constructor(query, queryString) {
     this.query = query;
@@ -51,4 +52,4 @@ class APIFeatures {
   }
 }
 
-module.exports = APIFeatures;
+export default APIFeatures;
