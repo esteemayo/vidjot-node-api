@@ -1,19 +1,19 @@
-const express = require('express');
-const logger = require('morgan');
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
-const cors = require('cors');
-const compression = require('compression');
-const hpp = require('hpp');
+import express from 'express';
+import logger from 'morgan';
+import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
+import xss from 'xss-clean';
+import cors from 'cors';
+import compression from 'compression';
+import hpp from 'hpp';
 
 // requiring routes
-const NotFoundError = require('./errors/notFound');
-const ideaRouter = require('./routes/idea');
-const globalErrorHandler = require('./controllers/errorController');
-const authRouter = require('./routes/auth');
-const userRouter = require('./routes/user');
+import NotFoundError from './errors/notFound.js';
+import ideaRouter from './routes/idea.js';
+import globalErrorHandler from './controllers/errorController.js';
+import authRouter from './routes/auth.js';
+import userRouter from './routes/user.js';
 
 // start express app
 const app = express();
@@ -85,4 +85,4 @@ app.all('*', (req, res, next) => {
 
 app.use(globalErrorHandler);
 
-module.exports = app;
+export default app;
