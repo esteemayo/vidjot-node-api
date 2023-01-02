@@ -14,6 +14,7 @@ export const signup = catchErrors(async (req, res, next) => {
     'name',
     'email',
     'role',
+    'photo',
     'username',
     'password',
     'passwordConfirm',
