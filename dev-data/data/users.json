@@ -238,7 +238,7 @@
     "name": "John Riley",
     "email": "john@example.com",
     "username": "john",
-    "photo": "",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/vidjot-ff7ae.appspot.com/o/images%2F1672676244620-user-19.jpg?alt=media&token=18cc5cce-dea6-4eff-99cd-29075a40c1e2",
     "password": "$2a$12$mJ4s9QaY7NbtpRRBaIxwVujXCtAd3VS8vdyj.al8gLKtV1pD3JPiO"
   },
   {
