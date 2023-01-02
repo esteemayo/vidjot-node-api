@@ -40,7 +40,7 @@ export const updateMe = catchErrors(async (req, res, next) => {
     );
   }
 
-  const filterBody = _.pick(req.body, ['name', 'email', 'username']);
+  const filterBody = _.pick(req.body, ['name', 'email', 'photo', 'username']);
   const user = await User.findByIdAndUpdate(
     req.user._id,
     { $set: { ...filterBody } },
