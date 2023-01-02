@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 dotenv.config({ path: './config.env' });
 
-const devEnv = process.env !== 'production';
+const devEnv = process.env.NODE_ENV !== 'production';
 const { DATABASE, DATABASE_LOCAL, DATABASE_PASSWORD } = process.env;
 
 // db local
