@@ -194,7 +194,7 @@
     "name": "Max Smith",
     "email": "max@example.com",
     "username": "max",
-    "photo": "",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/vidjot-ff7ae.appspot.com/o/images%2F1672676030483-user-17.jpg?alt=media&token=846df2da-3068-448e-9d3b-7c36ad69c17c",
     "password": "$2a$12$uMYyHvCFuWozock.p5xSMe3u/tlkYOEghAOJ2yvZN.nnMJ.ditREq"
   },
   {
