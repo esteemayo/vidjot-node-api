@@ -216,7 +216,7 @@
     "name": "Alexander Jones",
     "email": "alex@example.com",
     "username": "alex",
-    "photo": "",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/vidjot-ff7ae.appspot.com/o/images%2F1672676142014-user-20.jpg?alt=media&token=eeac9b41-4c85-47d3-a386-e2cff8a51737",
     "password": "$2a$12$GnXVOSojktUfLSN3VzEchutn5486b4bpoSH9mtSmzQkhKc8pjcswS"
   },
   {
