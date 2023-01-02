@@ -7,6 +7,7 @@
     "name": "Emmanuel Adebayo",
     "email": "admin@vidjot.com",
     "username": "esteemayo",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/vidjot-ff7ae.appspot.com/o/images%2F1672674985992-pexels-photo-771742.webp?alt=media&token=3e6ef295-280f-4659-85bd-e3ac9f645837",
     "password": "$2a$12$OI907L4btVwm3ThEkszcLef4dWiL1PFBBwgzsiJUmupVA95XmDHYa"
   },
   {
@@ -17,6 +18,7 @@
     "name": "Maye Wintheiser",
     "email": "maye.admin@vidjot.com",
     "username": "maye",
+    "photo": "",
     "password": "$2a$12$XX30Wdo2h3ee/rJ7VfwbUOTzDWemd1BwMsTkyXuJXqBxg7mKotQpu"
   },
   {
@@ -27,6 +29,7 @@
     "name": "John Doe",
     "email": "jdoe@example.com",
     "username": "jdoe",
+    "photo": "",
     "password": "$2a$12$iUVZc2X0U.w8SUkdB/P./ucl5aqEA7hs1.92KZ8zMwlD04qbx3xui"
   },
   {
@@ -37,6 +40,7 @@
     "name": "Mary Doe",
     "email": "mdoe@example.com",
     "username": "mdoe",
+    "photo": "",
     "password": "$2a$12$p1OD6Xf8V.2/ckitBoGRD.9HzevPYrhqDqxySWHY8eygivYOhmMKi"
   },
   {
@@ -47,6 +51,7 @@
     "name": "Lourdes Browning",
     "email": "loulou@example.com",
     "username": "loulou",
+    "photo": "",
     "password": "$2a$12$AdULPlEwSJgz3Z8I9kuG7eDh1uFEluQwVpYW0peBbY5U8UE9riaz."
   },
   {
@@ -57,6 +62,7 @@
     "name": "Sophie Louise Hart",
     "email": "sophie@example.com",
     "username": "sophie",
+    "photo": "",
     "password": "$2a$12$3YFwnH.YaAGZQAf5D2dvvuCIdnwpy7fkDveLMAgPJ0Fu.WSCmZgzy"
   },
   {
@@ -67,6 +73,7 @@
     "name": "Ayla Cornell",
     "email": "ayls@example.com",
     "username": "ayls",
+    "photo": "",
     "password": "$2a$12$bUGdnJ.suPdxw4XGyQBMCu4rP8pT2j2gXuOe4huGdKwkmYhiUO93a"
   },
   {
@@ -77,6 +84,7 @@
     "name": "Leo Gillespie",
     "email": "leo@example.com",
     "username": "leo",
+    "photo": "",
     "password": "$2a$12$AmnPPD22JTCdVWsbFEjE2uyV36n4YmOHuBZNkbAWtv0.TwqJgogz."
   },
   {
@@ -87,6 +95,7 @@
     "name": "Jennifer Hardy",
     "email": "jennifer@example.com",
     "username": "jennie",
+    "photo": "",
     "password": "$2a$12$6cc2RQ.5T1r31gjyYJBTBePY5yF7j883qLOA2jauSVkx.c0mTyKtW"
   },
   {
@@ -97,6 +106,7 @@
     "name": "Kate Morrison",
     "email": "kate@example.com",
     "username": "kate",
+    "photo": "",
     "password": "$2a$12$OMzzG2i2antqW3ByMP3BPOWruENOwAqEH/I98KvVZMw.dcxzkqukW"
   },
   {
@@ -107,6 +117,7 @@
     "name": "Eliana Stout",
     "email": "eliana@example.com",
     "username": "eliana",
+    "photo": "",
     "password": "$2a$12$L3gZvv9T0Orxw8Hqpo32Ke/M2o23EaO6S9aCuAYLEstUQxR6tDx3C"
   },
   {
@@ -117,6 +128,7 @@
     "name": "Cristian Vega",
     "email": "chris@example.com",
     "username": "chris",
+    "photo": "",
     "password": "$2a$12$.DSCElSI0HHqLbvWqIcFAeMaTp62V6GB7Y0lHGMxe89wo/WUjGwdO"
   },
   {
@@ -127,6 +139,7 @@
     "name": "Steve T. Scaife",
     "email": "steve@example.com",
     "username": "steve",
+    "photo": "",
     "password": "$2a$12$OU3DwoHpQfE8BGn9QMEBNON5kzG9GVVm7ARbstzcf/jcTvKdn7KqC"
   },
   {
@@ -137,6 +150,7 @@
     "name": "Aarav Lynn",
     "email": "aarav@example.com",
     "username": "aarav",
+    "photo": "",
     "password": "$2a$12$DaS0IZLj0FAuZ/rUxX4qGencBqLmry.rARgIeF9Kx13B3BqK62156"
   },
   {
@@ -147,6 +161,7 @@
     "name": "Miyah Myles",
     "email": "miyah@example.com",
     "username": "miyah",
+    "photo": "",
     "password": "$2a$12$F5UtCn9cwkikpvuOX2i7d.Flr80y/UsdMb1TXlPpHO1NzcOHcc25O"
   },
   {
@@ -157,6 +172,7 @@
     "name": "Ben Hadley",
     "email": "ben@example.com",
     "username": "ben",
+    "photo": "",
     "password": "$2a$12$vPSgu3eQQbJ3ZlhzdExCMOyXyzb9aetGsObzWjb9bfrdHN6VgPHQG"
   },
   {
@@ -167,6 +183,7 @@
     "name": "Laura Wilson",
     "email": "laura@example.com",
     "username": "laura",
+    "photo": "",
     "password": "$2a$12$RajrI7h2IpyyiQbHH/19KOQvYnpENa8sMoUVRPxs9bmYyXNZcAo9."
   },
   {
@@ -177,6 +194,7 @@
     "name": "Max Smith",
     "email": "max@example.com",
     "username": "max",
+    "photo": "",
     "password": "$2a$12$uMYyHvCFuWozock.p5xSMe3u/tlkYOEghAOJ2yvZN.nnMJ.ditREq"
   },
   {
@@ -187,6 +205,7 @@
     "name": "Isabel Kirkland",
     "email": "isabel@example.com",
     "username": "isabel",
+    "photo": "",
     "password": "$2a$12$CSjM85SrKvn0tDLnp78hhe/AmNf/hRLgoQLMZ1U8uxAQk.ov.8xPO"
   },
   {
@@ -197,6 +216,7 @@
     "name": "Alexander Jones",
     "email": "alex@example.com",
     "username": "alex",
+    "photo": "",
     "password": "$2a$12$GnXVOSojktUfLSN3VzEchutn5486b4bpoSH9mtSmzQkhKc8pjcswS"
   },
   {
@@ -207,6 +227,7 @@
     "name": "Eduardo Hernandez",
     "email": "edu@example.com",
     "username": "edu",
+    "photo": "",
     "password": "$2a$12$GV0KD75toHhP/SMyiYJ8p.OoCBAp.VLfZkykw/BRFIdVxCQGkRmm."
   },
   {
@@ -217,6 +238,7 @@
     "name": "John Riley",
     "email": "john@example.com",
     "username": "john",
+    "photo": "",
     "password": "$2a$12$mJ4s9QaY7NbtpRRBaIxwVujXCtAd3VS8vdyj.al8gLKtV1pD3JPiO"
   },
   {
@@ -227,6 +249,7 @@
     "name": "Lisa Brown",
     "email": "lisa@example.com",
     "username": "lisa",
+    "photo": "",
     "password": "$2a$12$idlg1J4nt665msmakb/nrehBObiRwCYiq/h/YdrCWixflHWyA95g6"
   }
 ]
