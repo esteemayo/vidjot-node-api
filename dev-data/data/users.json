@@ -29,7 +29,7 @@
     "name": "John Doe",
     "email": "jdoe@example.com",
     "username": "jdoe",
-    "photo": "",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/vidjot-ff7ae.appspot.com/o/images%2F1672675245240-user-5.jpg?alt=media&token=0c46c074-012e-494d-894d-877bf6e48246",
     "password": "$2a$12$iUVZc2X0U.w8SUkdB/P./ucl5aqEA7hs1.92KZ8zMwlD04qbx3xui"
   },
   {
