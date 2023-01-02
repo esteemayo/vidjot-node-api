@@ -40,7 +40,7 @@
     "name": "Mary Doe",
     "email": "mdoe@example.com",
     "username": "mdoe",
-    "photo": "",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/vidjot-ff7ae.appspot.com/o/images%2F1672675289817-user-2.jpg?alt=media&token=0dc3575b-d5c0-47cb-ba13-50e54a2939e9",
     "password": "$2a$12$p1OD6Xf8V.2/ckitBoGRD.9HzevPYrhqDqxySWHY8eygivYOhmMKi"
   },
   {
