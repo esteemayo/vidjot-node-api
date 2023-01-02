@@ -249,7 +249,7 @@
     "name": "Lisa Brown",
     "email": "lisa@example.com",
     "username": "lisa",
-    "photo": "",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/vidjot-ff7ae.appspot.com/o/images%2F1672676324558-monica.jpg?alt=media&token=a76f7e7a-d368-49bf-b742-3efdfee3e4b6",
     "password": "$2a$12$idlg1J4nt665msmakb/nrehBObiRwCYiq/h/YdrCWixflHWyA95g6"
   }
 ]
